@@ -1,0 +1,21 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+} 
+
+
+.card {
+    border: 1px solid #eeee;
+    border-radius: 5px;
+    padding: 15px 20px;
+    width: fit-content;
+    mat-icon {
+        position: relative;
+        top: 4px;
+    }
+}

@@ -1,0 +1,9 @@
+<div class="card">
+    <p class="card__title">Componente padre</p>
+    <div class="card__content">
+        <p>Persona: {{person.name}}</p>
+        <p>Edad: {{person.age}}</p>
+        <button mat-stroked-button (click)="birthday()">Cumplir años</button>
+        <app-test1-children [person]="person"></app-test1-children>
+    </div>
+</div>
