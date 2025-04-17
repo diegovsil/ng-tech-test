@@ -1,0 +1,23 @@
+header {
+    height: 56px;
+}
+
+.main-container {
+    position: relative;
+    z-index: 1;
+    display: block;
+    height: calc(100% - 56px);
+    overflow: auto;
+
+    .left-content {
+        width: 240px;
+        border-right: 1px solid #eee;
+        border-radius: 0;
+        padding: 16px 8px;
+    }
+
+    .main-content {
+        /*   background: #181818; */
+        padding: 20px 50px;
+    }
+}
