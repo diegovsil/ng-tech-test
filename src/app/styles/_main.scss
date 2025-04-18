@@ -24,6 +24,15 @@ a {
     border-radius: 5px;
     padding: 15px 20px;
     width: fit-content;
+    &__title{
+        font-size: 1.6rem;
+    }
+    &__subtitle {
+        font-size: 1.1rem;
+    }
+    button {
+        margin: 20px 0;
+    }
 
     mat-icon {
         position: relative;
