@@ -1,12 +1,12 @@
 <header class="header">
-  <h1>ZH Tech Test</h1>
+  <h1><img alt="Zara Home" class="logo-img"
+      src="https://static.zarahome.net/8/static4/itxwebstandard/images/logos/logo.svg">Test</h1>
 </header>
 <mat-sidenav-container class="main-container">
   <mat-sidenav class="left-content" mode="side" opened>
-    <mat-list role="list">
-      <mat-list-item role="listitem"><a [routerLink]="['/tests/1']" [routerLinkActive]="'active'">Test 1</a></mat-list-item>
-      <mat-list-item role="listitem"><a [routerLink]="['/tests/2']" [routerLinkActive]="'active'">Test 2</a></mat-list-item>
-      <mat-list-item role="listitem">Item 3</mat-list-item>
+    <mat-list class="menu" role="list">
+      <a mat-list-item [routerLink]="['/tests/1']" [routerLinkActive]="'active'">Test 1</a>
+      <a mat-list-item  [routerLink]="['/tests/2']" [routerLinkActive]="'active'">Test2</a>
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content class="main-content">
