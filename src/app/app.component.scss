@@ -9,6 +9,8 @@ header {
     width: 150px;
     height: auto;
     margin-right: 20px;
+    position: relative;
+    top: 3px;
   }
   h1 {
     font-size: 1.8rem;
@@ -42,7 +44,7 @@ header {
   }
 
   .main-content {
-    /*   background: #181818; */
+    box-sizing: border-box;
     padding: 20px 50px;
   }
 }
