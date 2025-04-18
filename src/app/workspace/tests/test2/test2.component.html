@@ -3,18 +3,17 @@
   <div class="card">
     <p class="card__title">Cuenta Bancaria</p>
     <div class="card__content">
-      <button mat-stroked-button [disabled]="backAccountBalance$" (click)="getBankAccountBalance()">Consultar saldo cuenta</button>
-      @if (backAccountBalance$ | async; as backAccountBalance) {
-      <p>Tu saldo es de {{ backAccountBalance }} €</p>
+      <button mat-stroked-button [disabled]="bankAccountBalance" (click)="showBankAccountBalance()">Consultar saldo cuenta</button>
+      @if (bankAccountBalance > -1) {
+      <p>Tu saldo es de {{ bankAccountBalance }} €</p>
       }
     </div>
   </div>
   <div class="card">
-    <p class="card__title">Precio Bitcoin</p>
+    <p class="card__title">Mercado criptomonedas</p>
     <div class="card__content">
-      <button mat-stroked-button (click)="getBitcoinPrice()">Consultar precio Bitcoin</button>
       @if (bitcoinPrice$ | async; as bitcoinPrice) {
-        <p>Precio Bitcoin {{ bitcoinPrice }} €</p>
+      <p>precio bitcoin {{ bitcoinPrice }} €</p>
       }
     </div>
   </div>
@@ -22,9 +21,7 @@
   <div class="card">
     <p class="card__title">Bitcoin comprados</p>
     <div class="card__content">
-      <button [disabled]="!backAccountBalance$ || !bitcoinPrice$ || bitcoinsPurchased$" mat-stroked-button (click)="buyBitcoins()">
-        Comprar Bitcoins
-      </button>
+      <button [disabled]="!bankAccountBalance || bitcoinsPurchased$" mat-stroked-button (click)="buyBitcoins()">Comprar Bitcoins</button>
       <p>Bitcoins comprados {{ bitcoinsPurchased$ | async }}</p>
     </div>
   </div>
