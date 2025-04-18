@@ -9,7 +9,7 @@ import { MatButton } from '@angular/material/button';
   standalone: true,
   imports: [AsyncPipe, MatButton],
   templateUrl: './test2.component.html',
-  styleUrl: './test2.component.scss'
+  styleUrl: './test2.component.scss',
 })
 export class Test2Component implements OnInit {
   backAccountBalance$: Observable<number>;
@@ -17,14 +17,9 @@ export class Test2Component implements OnInit {
   bitcoinPrice$: Observable<number>;
   bitcoinPrice: number;
   bitcoinsPurchased$: Observable<number>;
-  constructor(private test2Service: Test2Service) {
+  constructor(private test2Service: Test2Service) {}
 
-  }
-
-  ngOnInit(): void {
-
-
-  }
+  ngOnInit(): void {}
 
   getBankAccountBalance() {
     if (!this.backAccountBalance) {
@@ -37,13 +32,10 @@ export class Test2Component implements OnInit {
   }
 
   buyBitcoins() {
-    this.bitcoinsPurchased$ = forkJoin([
-      this.backAccountBalance$,
-      this.bitcoinPrice$
-    ]).pipe(
+    this.bitcoinsPurchased$ = forkJoin([this.backAccountBalance$, this.bitcoinPrice$]).pipe(
       map(([backAccountBalance, bitcoinPrice]) => {
         return Math.floor(backAccountBalance / bitcoinPrice);
-      })
+      }),
     );
   }
 }
