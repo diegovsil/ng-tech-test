@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatButton } from '@angular/material/button';
-import { Test1ChildrenComponent } from '../test1-children/test1-children.component';
+import { Test1ChildrenComponent } from '../test-pension-children/test-pension-children.component';
 
 @Component({
   selector: 'app-test1-parent',

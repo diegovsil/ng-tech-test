@@ -6,7 +6,7 @@ export const routes: Routes = [
     children: [
       {
         path: '1',
-        loadComponent: () => import('./workspace/tests/test1/test1.component').then((m) => m.Test1Component),
+        loadComponent: () => import('./workspace/tests/test-pension/test-pension.component').then((m) => m.TestPensionComponent),
       },
       {
         path: '2',
