@@ -1,33 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { Test2Service } from './services/test2.service';
+import { TestBitcoinService } from './services/test-bitcoin.service';
 import { forkJoin, map, Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-test2',
+  selector: 'zh-test-bitcoin',
   standalone: true,
   imports: [AsyncPipe, MatButton, MatIcon],
-  templateUrl: './test2.component.html',
-  styleUrl: './test2.component.scss',
+  templateUrl: './test-bitcoin.component.html',
+  styleUrl: './test-bitcoin.component.scss',
 })
-export class Test2Component implements OnInit {
+export class TestBitcoinComponent implements OnInit {
   bankAccountBalance: number;
   bitcoinPrice$: Observable<number>;
   bitcoinsPurchased$: Observable<{ bitcoins: number; unitPrice: number }>;
-  constructor(private test2Service: Test2Service) {}
+  constructor(private testBitcoinService: TestBitcoinService) {}
 
   ngOnInit(): void {
     this.bitcoinPrice$ = this.getBitcoinPrice$();
   }
 
   private getBankAccountBalance$() {
-    return this.test2Service.getBankAccountBalance$();
+    return this.testBitcoinService.getBankAccountBalance$();
   }
 
   private getBitcoinPrice$() {
-    return this.test2Service.getBitcoinPrice$();
+    return this.testBitcoinService.getBitcoinPrice$();
   }
 
   showBankAccountBalance() {

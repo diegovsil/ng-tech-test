@@ -6,11 +6,11 @@ export const routes: Routes = [
     children: [
       {
         path: '1',
-        loadComponent: () => import('./workspace/tests/test-pension/test-pension.component').then((m) => m.TestPensionComponent),
+        loadComponent: () => import('./workspace/scenarios/test-pension/test-pension.component').then((m) => m.TestPensionComponent),
       },
       {
         path: '2',
-        loadComponent: () => import('./workspace/tests/test2/test2.component').then((m) => m.Test2Component),
+        loadComponent: () => import('./workspace/scenarios/test-bitcoin/test-bitcoin.component').then((m) => m.TestBitcoinComponent),
       },
     ],
   },

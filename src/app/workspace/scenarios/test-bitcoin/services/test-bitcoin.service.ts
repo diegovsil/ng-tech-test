@@ -4,7 +4,7 @@ import { delay, interval, map, Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class Test2Service {
+export class TestBitcoinService {
   constructor() {}
 
   // simulates a delayed http request
