@@ -7,15 +7,12 @@ import { Test1ChildrenComponent } from '../test1-children/test1-children.compone
   standalone: true,
   imports: [MatButton, Test1ChildrenComponent],
   templateUrl: './test1-parent.component.html',
-  styleUrl: './test1-parent.component.scss'
+  styleUrl: './test1-parent.component.scss',
 })
 export class Test1ParentComponent {
   person = { name: 'Pedro', age: 30 };
 
-
-  constructor() {
-
-  }
+  constructor() {}
 
   birthday(): void {
     this.person.age++;
