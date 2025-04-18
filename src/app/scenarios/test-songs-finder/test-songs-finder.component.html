@@ -1,0 +1,32 @@
+<h2>Buscador de canciones</h2>
+<div class="card__container">
+  <div class="card">
+    <p class="card__title">Encuentra tu canción</p>
+    <div class="card__content">
+      <form [formGroup]="searchForm">
+        <mat-form-field>
+          <mat-label>escribe para buscar</mat-label>
+          <input [formControlName]="'song'" matInput />
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <div class="card">
+    <p class="card__title">Coste del servicio</p>
+    <div class="card__content">{{ totalSearches * costPerSearch }} €</div>
+  </div>
+  <div class="card">
+    <p class="card__title">Canciones encontradas</p>
+    <div class="card__content">
+      @for(song of songs; track song.trackId) {
+      <mat-list class="icon-list">
+        <mat-list-item>
+          <mat-icon matListItemIcon>library_music</mat-icon>
+          <div matListItemTitle>{{ song.artistName }}</div>
+          <div matListItemLine>{{ song.trackName }}</div>
+        </mat-list-item>
+      </mat-list>
+      }
+    </div>
+  </div>
+</div>

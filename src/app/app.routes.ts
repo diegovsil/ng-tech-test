@@ -12,6 +12,10 @@ export const routes: Routes = [
         path: '2',
         loadComponent: () => import('./scenarios/test-bitcoin/test-bitcoin.component').then((m) => m.TestBitcoinComponent),
       },
+      {
+        path: '3',
+        loadComponent: () => import('./scenarios/test-songs-finder/test-songs-finder.component').then((m) => m.TestSongsFinderComponent),
+      },
     ],
   },
 ];
