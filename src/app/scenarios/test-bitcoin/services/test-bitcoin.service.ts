@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { delay, interval, map, Observable, of } from 'rxjs';
+import { delay, interval, map, Observable, of, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ export class TestBitcoinService {
 
   // simulates a delayed http request
   getBankAccountBalance$(): Observable<number> {
-    return of(5000000).pipe(delay(100));
+    return of(5000000).pipe(delay(100), take(1));
   }
 
   // simulates service that emits bitcoin price every 2 seconds
