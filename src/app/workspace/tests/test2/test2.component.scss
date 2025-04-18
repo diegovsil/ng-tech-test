@@ -1,0 +1,10 @@
+.card__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 600px;
+    justify-content: space-evenly;
+    .card {
+        text-align: center;
+    }
+}

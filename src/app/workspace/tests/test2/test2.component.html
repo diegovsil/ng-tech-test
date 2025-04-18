@@ -1,1 +1,29 @@
-<p>test2 works!</p>
+<h2>Inversiones</h2>
+<div class="card__container">
+    <div class="card">
+        <p class="card__title">Cuenta Bancaria</p>
+        <div class="card__content">
+            <button mat-stroked-button [disabled]="backAccountBalance$" (click)="getBankAccountBalance()">Consultar
+                Saldo
+                cuenta</button>
+            <p>Tu saldo es de {{backAccountBalance$ | async}} €</p>
+        </div>
+    </div>
+    <div class="card">
+        <p class="card__title">Precio Bitcoin</p>
+        <div class="card__content">
+            <button mat-stroked-button (click)="getBitcoinPrice()">Consultar precio Bitcoin</button>
+            <p>Precio Bitcoin {{bitcoinPrice$ | async}} €</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <p class="card__title">Bitcoin comprados</p>
+        <div class="card__content">
+            <button [disabled]="!backAccountBalance$ || !bitcoinPrice$ || bitcoinsPurchased$" mat-stroked-button
+                (click)="buyBitcoins()">Comprar
+                Bitcoins</button>
+            <p>Bitcoins comprados {{bitcoinsPurchased$ | async}}</p>
+        </div>
+    </div>
+</div>
