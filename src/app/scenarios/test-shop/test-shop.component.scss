@@ -1,0 +1,10 @@
+.card__container {
+    display: flex;
+    .card {
+        width: 35%;
+        box-sizing: border-box;
+        &:first-child {
+            width: 60%;
+        }
+    }
+}

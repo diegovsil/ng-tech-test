@@ -16,6 +16,10 @@ export const routes: Routes = [
         path: '3',
         loadComponent: () => import('./scenarios/test-songs-finder/test-songs-finder.component').then((m) => m.TestSongsFinderComponent),
       },
+      {
+        path: '4',
+        loadComponent: () => import('./scenarios/test-shop/test-shop.component').then((m) => m.TestShopComponent),
+      },
     ],
   },
 ];
