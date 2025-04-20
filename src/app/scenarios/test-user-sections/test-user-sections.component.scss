@@ -1,0 +1,15 @@
+.card__container {
+    text-align: center;
+  button,
+  a {
+    margin: 20px 10px;
+  }
+  .userType {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    mat-chip-set {
+        margin: 0 auto;
+    }
+  }
+}
