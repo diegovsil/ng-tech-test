@@ -20,6 +20,18 @@ export const routes: Routes = [
         path: '4',
         loadComponent: () => import('./scenarios/test-shop/test-shop.component').then((m) => m.TestShopComponent),
       },
+      {
+        path: '5',
+        loadComponent: () => import('./scenarios/test-user-sections/test-user-sections.component').then((m) => m.TestUserSectionsComponent),
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('./scenarios/test-user-sections/user.routes')
+              .then((m) => m.userRoutes),
+          },
+        ],
+
+      },
     ],
   },
 ];

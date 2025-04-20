@@ -1,0 +1,18 @@
+<h2>Área de Usuarios</h2>
+<div class="card__container">
+  <div class="card">
+    <p class="card__title">Selecciona tipo de usuario</p>
+    <button color="danger" (click)="setRegisteredUser()" mat-stroked-button [disabled]="user.type === registeredType">
+      Cambiar a registrado
+    </button>
+    <button color="primary" (click)="setGuestdUser()" mat-stroked-button [disabled]="user.type === guestType">Cambiar a invitado</button>
+    <p>el usuario activo es de tipo {{ user.type === registeredType ? 'Registrado' : 'Invitado' }}</p>
+    <nav>
+      <a mat-stroked-button [routerLink]="'private'">Ir a seccion privada</a>
+      <a mat-stroked-button [routerLink]="'public'">Ir a seccion pública</a>
+    </nav>
+  </div>
+  <div class="card">
+    <router-outlet></router-outlet>
+  </div>
+</div>
