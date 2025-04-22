@@ -1,2 +1,13 @@
 <h2>Calculo de pensión</h2>
-<zh-test-pension-parent></zh-test-pension-parent>
+<div class="card">
+  <p class="card__title">Componente padre</p>
+  <p class="card__subtitle">
+    Le edad de jubilación es de 67 años. La pensión de una persona será más alta cuanta mayor sea su edad cuando se jubile
+  </p>
+  <div class="card__content">
+    <p>Persona: {{ person.name }}</p>
+    <p>Edad: {{ person.age }}</p>
+    <button mat-stroked-button (click)="birthday()">Cumplir años</button>
+    <zh-test-pension-children [person]="person"></zh-test-pension-children>
+  </div>
+</div>
