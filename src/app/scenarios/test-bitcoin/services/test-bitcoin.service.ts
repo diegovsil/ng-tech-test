@@ -15,7 +15,7 @@ export class TestBitcoinService {
   // simulates service that emits bitcoin price every 2 seconds
   getBitcoinPrice$(): Observable<number> {
     return interval(2000).pipe(
-      // Every second
+      // Every two seconds
       map(() => {
         // Generate a random number between 40,000 and 60,000
         return Math.floor(Math.random() * (60000 - 40000 + 1)) + 40000;
