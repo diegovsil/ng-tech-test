@@ -5,7 +5,7 @@
     <div class="card__content">
       <button mat-stroked-button [disabled]="bankAccountBalance" (click)="showBankAccountBalance()">Consultar saldo cuenta</button>
       @if (bankAccountBalance > -1) {
-      <p>Tu saldo es de {{ bankAccountBalance }} €</p>
+        <p>Tu saldo es de {{ bankAccountBalance }} €</p>
       }
     </div>
   </div>
@@ -13,7 +13,7 @@
     <p class="card__title"><mat-icon>bar_chart_4_bars</mat-icon> Mercado criptomonedas</p>
     <div class="card__content">
       @if (bitcoinPrice$ | async; as bitcoinPrice) {
-      <p>precio bitcoin {{ bitcoinPrice }} €</p>
+        <p>precio bitcoin {{ bitcoinPrice }} €</p>
       }
     </div>
   </div>
@@ -21,11 +21,11 @@
   <div class="card">
     <p class="card__title"><mat-icon>currency_bitcoin</mat-icon> Bitcoins comprados</p>
     <div class="card__content">
-      @if(bitcoinsPurchased$ | async; as bitcoinData) {
-      <p>has comprado {{ bitcoinData.bitcoins }} bitcoins a {{ bitcoinData.unitPrice }}€ cada uno</p>
+      @if (bitcoinsPurchased$ | async; as bitcoinData) {
+        <p>has comprado {{ bitcoinData.bitcoins }} bitcoins a {{ bitcoinData.unitPrice }}€ cada uno</p>
       } @else {
-      <button [disabled]="!bankAccountBalance" mat-stroked-button (click)="buyBitcoins()">Comprar Bitcoins</button>
-      <p>no has comprado ningún bitcoin</p>
+        <button [disabled]="!bankAccountBalance" mat-stroked-button (click)="buyBitcoins()">Comprar Bitcoins</button>
+        <p>no has comprado ningún bitcoin</p>
       }
     </div>
   </div>
