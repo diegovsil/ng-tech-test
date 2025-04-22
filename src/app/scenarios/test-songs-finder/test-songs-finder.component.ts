@@ -29,7 +29,6 @@ export class TestSongsFinderComponent implements OnInit {
   ngOnInit(): void {
     this.costPerSearch = this.testSongsFinderService.costPerSearch;
     this.searchForm.get('song')?.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((value) => {
-      console.log(value);
       this.searchSongs(value);
     });
   }
@@ -37,7 +36,7 @@ export class TestSongsFinderComponent implements OnInit {
   searchSongs(term: string) {
     this.testSongsFinderService.searchSongs(term).subscribe((results) => {
       this.songs = results.results;
-      this.totalSearches += results.resultCount;
+      this.totalSearches += 1;
     });
   }
 }
