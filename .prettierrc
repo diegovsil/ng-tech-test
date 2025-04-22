@@ -1,21 +1,21 @@
 {
-    "tabWidth": 2,
-    "trailingComma": "all",
-    "singleQuote": true,
-    "bracketSpacing": true,
-    "printWidth": 140,
-    "overrides": [
-        {
-            "files": "*.jsonc",
-            "options": {
-                "trailingComma": "none"
-            }
-        },
-        {
-            "files": "*.html",
-            "options": {
-                "parser": "angular"
-            }
-        }
-    ]
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "bracketSpacing": true,
+  "printWidth": 140,
+  "overrides": [
+    {
+      "files": "*.jsonc",
+      "options": {
+        "trailingComma": "none"
+      }
+    },
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
 }
