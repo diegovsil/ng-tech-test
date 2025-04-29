@@ -7,7 +7,7 @@ import { User, UserType, UserTypes } from '../models/user.model';
 export class TestUserSectionsService {
   constructor() {}
 
-  private userData: User = {
+  public userData: User = {
     name: 'Juan',
     type: UserTypes.guest,
   };
