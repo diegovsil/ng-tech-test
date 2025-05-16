@@ -56,14 +56,14 @@ const questions = [
     },
     {
         level: 'intermedio',
-        question: '¿Cuál es la mejor práctica para optimizar un Observable que emite frecuentemente?',
+        question: '¿Cuál es una práctica para optimizar un Observable que emite frecuentemente?',
         options: [
             'Usar async pipe en el template',
             'Implementar debounceTime o throttleTime',
             'Usar Subject en lugar de Observable',
             'Todas son correctas'
         ],
-        correct: 3
+        correct: 1
     },
     {
         level: 'intermedio',
