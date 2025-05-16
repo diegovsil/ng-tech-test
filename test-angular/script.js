@@ -67,12 +67,12 @@ const questions = [
     },
     {
         level: 'intermedio',
-        question: 'En SSR (Server-Side Rendering), ¿qué hook del ciclo de vida deberías usar para código que solo debe ejecutarse en el navegador?',
+        question: 'En Angular Universal (SSR), ¿qué técnica se utiliza para evitar la hidratación innecesaria de componentes no visibles inicialmente?',
         options: [
-            'ngOnInit()',
-            'ngAfterViewInit()',
-            'ngAfterContentInit()',
-            'isPlatformBrowser()'
+            'Lazy Loading de módulos',
+            'TransferState API',
+            'NgOptimizedImage',
+            'Deferrable Views'
         ],
         correct: 3
     },
@@ -252,17 +252,55 @@ function showResults() {
     const results = calculateScore();
     const questionContainer = document.getElementById('test-container');
     const controls = document.getElementById('controls');
+    const resultsContainer = document.getElementById('results');
 
+    // Limpiar contenido anterior
+    const existingReview = resultsContainer.querySelector('.wrong-answers');
+    if (existingReview) {
+        existingReview.remove();
+    }
+
+    // Mostrar contenedor de resultados
     questionContainer.style.display = 'none';
     controls.style.display = 'none';
-    resultsDiv.style.display = 'block';
+    resultsContainer.style.display = 'block';
 
+    // Actualizar puntuaciones
     document.getElementById('score').textContent = results.total;
     document.getElementById('basic-score').textContent = results.basic;
     document.getElementById('intermediate-score').textContent = results.intermediate;
     document.getElementById('advanced-score').textContent = results.advanced;
-
     document.getElementById('feedback').textContent = getFeedback(results.total);
+
+    // Crear contenedor de revisión
+    const reviewContainer = document.createElement('div');
+    reviewContainer.className = 'wrong-answers';
+    reviewContainer.innerHTML = '<h3>Revisión de Preguntas</h3>';
+
+    // Generar revisión de preguntas
+    userAnswers.forEach((answer, index) => {
+        const question = questions[index];
+        const isCorrect = answer === question.correct;
+
+        const questionElement = document.createElement('div');
+        questionElement.className = `review-question ${isCorrect ? 'correct' : 'incorrect'}`;
+        questionElement.innerHTML = `
+            <p class="question-text">
+                <span class="question-status">${isCorrect ? '✓' : '✗'}</span>
+                ${index + 1}. ${question.question}
+            </p>
+            <div class="answers-review">
+                <p class="selected-answer">Tu respuesta: ${answer !== null ? question.options[answer] : 'Sin responder'}</p>
+                ${!isCorrect ? `<p class="correct-answer">Respuesta correcta: ${question.options[question.correct]}</p>` : ''}
+            </div>
+        `;
+
+        reviewContainer.appendChild(questionElement);
+    });
+
+    // Insertar la revisión antes del botón de reiniciar
+    const restartButton = document.getElementById('restart-btn');
+    resultsContainer.insertBefore(reviewContainer, restartButton);
 }
 
 function restartTest() {
@@ -272,6 +310,13 @@ function restartTest() {
 
     const questionContainer = document.getElementById('test-container');
     const controls = document.getElementById('controls');
+    const resultsContainer = document.getElementById('results');
+
+    // Limpiar revisión anterior
+    const reviewSection = resultsContainer.querySelector('.wrong-answers');
+    if (reviewSection) {
+        reviewSection.remove();
+    }
 
     questionContainer.style.display = 'block';
     controls.style.display = 'flex';
