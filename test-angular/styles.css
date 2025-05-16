@@ -164,3 +164,67 @@ button:not(:disabled):hover {
   color: white;
   margin-top: 20px;
 }
+
+/* Estilos para la sección de revisión de preguntas */
+.wrong-answers {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.wrong-answers h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.review-question {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  border-left: 4px solid;
+}
+
+.review-question.correct {
+  border-left-color: var(--success-color);
+  background-color: rgba(76, 175, 80, 0.05);
+}
+
+.review-question.incorrect {
+  border-left-color: var(--error-color);
+  background-color: rgba(244, 67, 54, 0.05);
+}
+
+.question-text {
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.question-status {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.correct .question-status {
+  color: var(--success-color);
+}
+
+.incorrect .question-status {
+  color: var(--error-color);
+}
+
+.answers-review {
+  margin-left: 25px;
+}
+
+.selected-answer {
+  margin: 5px 0;
+  color: #666;
+}
+
+.correct-answer {
+  margin: 5px 0;
+  color: var(--success-color);
+  font-weight: 500;
+}
