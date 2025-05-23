@@ -3,11 +3,12 @@
   <div class="card">
     <p class="card__title">Encuentra tu canción</p>
     <div class="card__content">
-      <form [formGroup]="searchForm">
+      <form [formGroup]="searchForm" (submit)="onSubmit()">
         <mat-form-field>
           <mat-label>escribe para buscar</mat-label>
           <input [formControlName]="'song'" matInput />
         </mat-form-field>
+        <button type="submit">buscar</button>
       </form>
     </div>
   </div>
