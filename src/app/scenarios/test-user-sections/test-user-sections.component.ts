@@ -15,6 +15,7 @@ export class TestUserSectionsComponent {
   readonly registeredType: UserType = UserTypes.registered;
   readonly guestType: UserType = UserTypes.guest;
   user: User;
+  usuario: UserType;
 
   constructor(private testUserSectionsService: TestUserSectionsService, private router: Router, private route: ActivatedRoute) {
     this.user = this.testUserSectionsService.user;

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { PrivateSectionComponent } from './private-section/private-section.component';
 import { PublicSectionComponent } from './public-section/public-section.component';
+import { Autorization } from './guards/autorzacion.guard';
 
 export const userRoutes: Routes = [
   {
@@ -10,5 +11,6 @@ export const userRoutes: Routes = [
   {
     path: 'private',
     component: PrivateSectionComponent,
+    canActivate: [Autorization],
   },
 ];
