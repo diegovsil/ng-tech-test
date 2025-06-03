@@ -179,7 +179,7 @@ function showQuestion() {
         ${question.options.map((option, index) => `
           <div class="option ${answered && userAnswers[currentQuestion] === index ? 'selected' : ''}"
                onclick="selectOption(${index})">
-            ${String.fromCharCode(97 + index)}) ${option}
+            ${index+1}) ${option}
           </div>
         `).join('')}
       </div>
