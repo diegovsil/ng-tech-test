@@ -135,8 +135,6 @@ const questions = [
 
 let currentQuestion = 0;
 let userAnswers = new Array(questions.length).fill(null);
-let timeLeft = 600; // 10 minutos en segundos
-let timerInterval;
 
 // Elementos DOM
 const questionContainer = document.getElementById('question-container');
@@ -144,28 +142,10 @@ const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const submitBtn = document.getElementById('submit-btn');
 const progressFill = document.getElementById('progressFill');
-const timeDisplay = document.getElementById('time');
 const resultsDiv = document.getElementById('results');
 const restartBtn = document.getElementById('restart-btn');
 
-// Inicializar temporizador
-function startTimer() {
-    updateTimer();
-    timerInterval = setInterval(() => {
-        timeLeft--;
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            showResults();
-        }
-        updateTimer();
-    }, 1000);
-}
 
-function updateTimer() {
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft % 60;
-    timeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-}
 
 // Mostrar pregunta actual
 function showQuestion() {
@@ -248,7 +228,6 @@ function getFeedback(score) {
 }
 
 function showResults() {
-    clearInterval(timerInterval);
     const results = calculateScore();
     const questionContainer = document.getElementById('test-container');
     const controls = document.getElementById('controls');
@@ -306,7 +285,6 @@ function showResults() {
 function restartTest() {
     currentQuestion = 0;
     userAnswers = new Array(questions.length).fill(null);
-    timeLeft = 600;
 
     const questionContainer = document.getElementById('test-container');
     const controls = document.getElementById('controls');
@@ -322,7 +300,7 @@ function restartTest() {
     controls.style.display = 'flex';
     resultsDiv.style.display = 'none';
 
-    startTimer();
+
     showQuestion();
 }
 
@@ -334,6 +312,5 @@ document.getElementById('restart-btn').addEventListener('click', restartTest);
 
 // Iniciar el test
 window.onload = () => {
-    startTimer();
     showQuestion();
 };
