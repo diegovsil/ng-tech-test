@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TestBitcoinService } from './services/test-bitcoin.service';
-import { forkJoin, map, Observable } from 'rxjs';
+import { take, forkJoin, map, Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -39,7 +39,7 @@ export class TestBitcoinComponent implements OnInit {
   buyBitcoins() {
     if (this.bankAccountBalance > 0) {
       this.bankAccountBalance = 0;
-      this.bitcoinsPurchased$ = forkJoin([this.getBankAccountBalance$(), this.bitcoinPrice$]).pipe(
+      this.bitcoinsPurchased$ = forkJoin([this.getBankAccountBalance$(), this.bitcoinPrice$.pipe(take(1))]).pipe(
         map(([bankAccountBalance, bitcoinPrice]) => {
           return {
             bitcoins: Math.floor(bankAccountBalance / bitcoinPrice),
