@@ -3,9 +3,24 @@
 <div class="card__container">
   <div class="card">
     <p class="card__title">Listado de productos</p>
+    @for (product of products$ |async; track product.id) {
+      <div>
+        <h4>{{product.name}}</h4>
+        <p>Precio: {{product.price | currency:'EUR': 'symbol': '1.0-2'}}</p>
+        <button type="button" (click)="addToCart(product)">Añadir a la cesta</button>
+      </div>
+    }
   </div>
 
   <div class="card">
     <p class="card__title">Mi cesta</p>
+    @for (product of cart(); track $index) {
+      <div>
+        <p>{{product.name}}: {{product.price | currency:'EUR': 'symbol': '1.0-2'}}</p>
+        <button type="button" (click)="removeFromCart($index)">Eliminar</button>
+      </div>
+    }
+    <p>Total artículos: {{checkoutInfo().nProducts}}</p>
+    <p>Total:{{checkoutInfo().amount | currency:'EUR': 'symbol': '1.0-2'}}</p>
   </div>
 </div>
