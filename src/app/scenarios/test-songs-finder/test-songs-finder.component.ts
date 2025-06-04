@@ -7,36 +7,30 @@ import { MatList, MatListItem, MatListItemLine, MatListItemTitle } from '@angula
 import { MatIcon } from '@angular/material/icon';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
+import { debounceTime,switchMap,map,tap } from 'rxjs/operators';
+import { AsyncPipe } from '@angular/common';
+
 @Component({
   selector: 'zh-test-test-songs-finder',
   standalone: true,
-  imports: [MatFormField, MatLabel, MatInput, ReactiveFormsModule, MatList, MatListItem, MatListItemTitle, MatListItemLine, MatIcon],
+  imports: [MatFormField, MatLabel, MatInput, ReactiveFormsModule, MatList, MatListItem, MatListItemTitle, MatListItemLine, MatIcon, AsyncPipe],
   templateUrl: './test-songs-finder.component.html',
   styleUrl: './test-songs-finder.component.scss',
 })
-export class TestSongsFinderComponent implements OnInit {
-  private destroyRef =  inject(DestroyRef);
-  searchForm: FormGroup;
-  songs: any[];
-  totalSearches: number = 0;
-  costPerSearch: number;
-  constructor(private testSongsFinderService: TestSongsFinderService) {
-    this.searchForm = new FormGroup({
+export class TestSongsFinderComponent {
+  #destroyRef =  inject(DestroyRef);
+  #testSongsFinderService =  inject(TestSongsFinderService);
+  searchForm = new FormGroup({
       song: new FormControl('', Validators.required),
     });
-  }
+  songs$ = this.searchForm.get('song')?.valueChanges.pipe(
+    debounceTime(500),
+    switchMap((term)=> this.#testSongsFinderService.searchSongs(term).pipe(
+      map((results)=>results.results ),
+      tap(()=>this.totalSearches += 1))
+    )
+  );
+  totalSearches: number = 0;
+  costPerSearch: number = this.#testSongsFinderService.costPerSearch;
 
-  ngOnInit(): void {
-    this.costPerSearch = this.testSongsFinderService.costPerSearch;
-    this.searchForm.get('song')?.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((value) => {
-      this.searchSongs(value);
-    });
-  }
-
-  searchSongs(term: string) {
-    this.testSongsFinderService.searchSongs(term).subscribe((results) => {
-      this.songs = results.results;
-      this.totalSearches += 1;
-    });
-  }
 }

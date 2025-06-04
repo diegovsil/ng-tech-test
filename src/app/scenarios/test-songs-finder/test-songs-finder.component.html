@@ -18,7 +18,7 @@
   <div class="card">
     <p class="card__title">Canciones encontradas</p>
     <div class="card__content">
-      @for (song of songs; track song.trackId) {
+      @for (song of songs$ | async; track song.trackId) {
         <mat-list class="icon-list">
           <mat-list-item>
             <mat-icon matListItemIcon>library_music</mat-icon>
