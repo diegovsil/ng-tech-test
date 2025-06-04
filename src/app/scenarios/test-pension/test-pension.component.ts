@@ -15,6 +15,9 @@ export class TestPensionComponent {
   constructor() {}
 
   birthday(): void {
-    this.person.age++;
+    this.person = {
+      ...this.person,
+      age: this.person.age + 1
+    };
   }
 }
