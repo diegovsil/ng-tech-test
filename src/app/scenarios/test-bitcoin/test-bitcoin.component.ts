@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TestBitcoinService } from './services/test-bitcoin.service';
-import { forkJoin, map, Observable } from 'rxjs';
+import { forkJoin, map, Observable, take } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -27,7 +27,7 @@ export class TestBitcoinComponent implements OnInit {
   }
 
   private getBitcoinPrice$() {
-    return this.testBitcoinService.getBitcoinPrice$();
+    return this.testBitcoinService.getBitcoinPrice$().pipe(take(1));
   }
 
   showBankAccountBalance() {
