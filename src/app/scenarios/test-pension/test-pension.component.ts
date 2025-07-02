@@ -16,5 +16,6 @@ export class TestPensionComponent {
 
   birthday(): void {
     this.person.age++;
+    this.person = {...this.person};
   }
 }
