@@ -12,7 +12,7 @@
     </div>
     <nav>
       <a mat-stroked-button [routerLink]="'public'">Ir a sección pública</a>
-      <a mat-stroked-button [routerLink]="'private'">Ir a sección privada</a>
+      <a mat-stroked-button [routerLink]="'private'" [disabled]="user.type === guestType">Ir a sección privada</a>
     </nav>
   </div>
     <router-outlet></router-outlet>
