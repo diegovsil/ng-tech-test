@@ -6,6 +6,7 @@ import { MatInput } from '@angular/material/input';
 import { MatList, MatListItem, MatListItemLine, MatListItemTitle } from '@angular/material/list';
 import { MatIcon } from '@angular/material/icon';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'zh-test-test-songs-finder',
@@ -15,7 +16,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrl: './test-songs-finder.component.scss',
 })
 export class TestSongsFinderComponent implements OnInit {
-  private destroyRef =  inject(DestroyRef);
+  private destroyRef = inject(DestroyRef);
   searchForm: FormGroup;
   songs: any[];
   totalSearches: number = 0;
@@ -28,9 +29,12 @@ export class TestSongsFinderComponent implements OnInit {
 
   ngOnInit(): void {
     this.costPerSearch = this.testSongsFinderService.costPerSearch;
-    this.searchForm.get('song')?.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((value) => {
-      this.searchSongs(value);
-    });
+    this.searchForm
+      .get('song')
+      ?.valueChanges.pipe(takeUntilDestroyed(this.destroyRef), debounceTime(500))
+      .subscribe((value) => {
+        this.searchSongs(value);
+      });
   }
 
   searchSongs(term: string) {
