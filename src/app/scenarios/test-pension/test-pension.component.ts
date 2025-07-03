@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { TestPensionChildrenComponent } from './test-pension-children/test-pension-children.component';
 import { MatButton } from '@angular/material/button';
 
@@ -7,14 +7,14 @@ import { MatButton } from '@angular/material/button';
   standalone: true,
   imports: [MatButton, TestPensionChildrenComponent],
   templateUrl: './test-pension.component.html',
-  styleUrl: './test-pension.component.scss'
+  styleUrl: './test-pension.component.scss',
 })
 export class TestPensionComponent {
   person = { name: 'Pedro', age: 30 };
 
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
 
   birthday(): void {
-    this.person.age++;
+    this.person = { ...this.person, age: ++this.person.age };
   }
 }

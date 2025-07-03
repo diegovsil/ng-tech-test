@@ -15,7 +15,9 @@ export class TestPensionChildrenComponent implements OnChanges {
   retirementAge: number = 67;
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.person)
     if (changes.person) {
+
       this.getPension();
     }
   }
