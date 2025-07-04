@@ -12,4 +12,5 @@ export class TestShopService {
   getProducts$(): Observable<Product[]> {
     return of(PRODUCTS);
   }
+
 }

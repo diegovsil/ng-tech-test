@@ -3,9 +3,21 @@
 <div class="card__container">
   <div class="card">
     <p class="card__title">Listado de productos</p>
+    <ul *ngIf="products$ | async as products">
+      <li *ngFor="let product of products">
+        {{ product.name }} - {{ product.price }}
+        <button (click)="addToCart(product)">Agregar producto a cesta</button>
+      </li>
+    </ul>
   </div>
 
   <div class="card">
     <p class="card__title">Mi cesta</p>
+    <ul *ngIf="cart$ | async as cart">
+      <li *ngFor="let product of cart">
+        {{ product.name }} - {{ product.price }}
+        <button (click)="removeFromCart(product)">Eliminar producto a cesta</button>
+      </li>
+    </ul>
   </div>
 </div>
