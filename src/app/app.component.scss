@@ -1,16 +1,16 @@
 header {
-  height: 56px;
-  background-color: #c72cb1;
-  display: flex;
   align-items: center;
-  padding: 10px 20px;
+  background-color: #c72cb1;
   box-sizing: border-box;
+  display: flex;
+  height: 56px;
+  padding: 10px 20px;
   .logo-img {
-    width: 150px;
     height: auto;
     margin-right: 20px;
     position: relative;
     top: 3px;
+    width: 150px;
   }
   h1 {
     font-size: 1.8rem;
@@ -19,26 +19,32 @@ header {
 }
 
 .main-container {
-  position: relative;
-  z-index: 1;
   display: block;
   height: calc(100% - 56px);
   overflow: auto;
+  position: relative;
+  z-index: 1;
 
   h2 {
     font-size: 1.2rem;
   }
 
   .left-content {
-    width: 240px;
-    border-right: 1px solid #eee;
     border-radius: 0;
+    border-right: 1px solid #eee;
     padding: 16px 8px;
+    width: 240px;
 
     .menu {
       .active,
       > a:hover {
         background-color: rgba(255, 255, 255, 0.1);
+      }
+      a {
+        .mat-icon {
+          position: relative;
+          top: 0px;
+        }
       }
     }
   }
