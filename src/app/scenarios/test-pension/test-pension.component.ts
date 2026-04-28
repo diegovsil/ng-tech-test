@@ -3,11 +3,10 @@ import { TestPensionChildrenComponent } from './test-pension-children/test-pensi
 import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'zh-test-pension',
-  standalone: true,
-  imports: [MatButton, TestPensionChildrenComponent],
-  templateUrl: './test-pension.component.html',
-  styleUrl: './test-pension.component.scss'
+    selector: 'zh-test-pension',
+    imports: [MatButton, TestPensionChildrenComponent],
+    templateUrl: './test-pension.component.html',
+    styleUrl: './test-pension.component.scss'
 })
 export class TestPensionComponent {
   person = { name: 'Pedro', age: 30 };

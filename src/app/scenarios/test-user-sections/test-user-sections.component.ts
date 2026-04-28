@@ -5,11 +5,10 @@ import { User, UserType, UserTypes } from './models/user.model';
 import { TestUserSectionsService } from './services/test-user-sections.service';
 
 @Component({
-  selector: 'zh-test-test-user-sections',
-  standalone: true,
-  imports: [MatButton, RouterLink, RouterOutlet, MatAnchor],
-  templateUrl: './test-user-sections.component.html',
-  styleUrl: './test-user-sections.component.scss',
+    selector: 'zh-test-test-user-sections',
+    imports: [MatButton, RouterLink, RouterOutlet, MatAnchor],
+    templateUrl: './test-user-sections.component.html',
+    styleUrl: './test-user-sections.component.scss'
 })
 export class TestUserSectionsComponent {
   readonly registeredType: UserType = UserTypes.registered;

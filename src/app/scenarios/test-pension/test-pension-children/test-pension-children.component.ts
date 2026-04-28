@@ -2,12 +2,11 @@ import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } f
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'zh-test-pension-children',
-  standalone: true,
-  imports: [MatIcon],
-  templateUrl: './test-pension-children.component.html',
-  styleUrl: './test-pension-children.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'zh-test-pension-children',
+    imports: [MatIcon],
+    templateUrl: './test-pension-children.component.html',
+    styleUrl: './test-pension-children.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TestPensionChildrenComponent implements OnChanges {
   pension: number = 0;

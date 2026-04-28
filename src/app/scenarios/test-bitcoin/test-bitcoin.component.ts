@@ -6,11 +6,10 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'zh-test-bitcoin',
-  standalone: true,
-  imports: [AsyncPipe, MatButton, MatIcon],
-  templateUrl: './test-bitcoin.component.html',
-  styleUrl: './test-bitcoin.component.scss',
+    selector: 'zh-test-bitcoin',
+    imports: [AsyncPipe, MatButton, MatIcon],
+    templateUrl: './test-bitcoin.component.html',
+    styleUrl: './test-bitcoin.component.scss'
 })
 export class TestBitcoinComponent implements OnInit {
   bankAccountBalance: number;

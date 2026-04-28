@@ -8,11 +8,10 @@ import { MatIcon } from '@angular/material/icon';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'zh-test-test-songs-finder',
-  standalone: true,
-  imports: [MatFormField, MatLabel, MatInput, ReactiveFormsModule, MatList, MatListItem, MatListItemTitle, MatListItemLine, MatIcon],
-  templateUrl: './test-songs-finder.component.html',
-  styleUrl: './test-songs-finder.component.scss',
+    selector: 'zh-test-test-songs-finder',
+    imports: [MatFormField, MatLabel, MatInput, ReactiveFormsModule, MatList, MatListItem, MatListItemTitle, MatListItemLine, MatIcon],
+    templateUrl: './test-songs-finder.component.html',
+    styleUrl: './test-songs-finder.component.scss'
 })
 export class TestSongsFinderComponent implements OnInit {
   private destroyRef =  inject(DestroyRef);
