@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { PlaygroundService } from './playground/playground.service';
 
 export const routes: Routes = [
   {
@@ -32,5 +33,10 @@ export const routes: Routes = [
         loadComponent: () => import('./scenarios/test-shop/test-shop.component').then((m) => m.TestShopComponent),
       },
     ],
+  },
+  {
+    path: 'playground',
+    loadComponent: () => import('./playground/playground.component').then((m) => m.PlaygroundComponent),
+    providers: [PlaygroundService],
   },
 ];
