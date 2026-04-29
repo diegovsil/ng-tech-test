@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, distinctUntilChanged, map, Observable } from 'rxjs';
 
-
-
 export interface AppState {
   user: string | null;
   loading: boolean;
@@ -12,7 +10,7 @@ export interface AppState {
 const initialState: AppState = {
   user: null,
   loading: false,
-  count: 0
+  count: 0,
 };
 
 @Injectable({
@@ -26,7 +24,7 @@ export class StateService {
   select<T>(selector: (state: AppState) => T): Observable<T> {
     return this.state$.asObservable().pipe(
       map(selector),
-      distinctUntilChanged() // Fundamental: solo emite si el valor real cambia
+      distinctUntilChanged(), // Fundamental: solo emite si el valor real cambia
     );
   }
 
@@ -48,5 +46,4 @@ export class StateService {
         return state;
     }
   }
-}
 }
