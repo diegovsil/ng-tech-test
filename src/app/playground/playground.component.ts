@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { of, from, Observable, Subject } from 'rxjs';
 import { concatMap, mergeMap, switchMap, delay } from 'rxjs/operators';
+import { LogComponent } from './log/log.component';
+import { LogService } from './log/log.service';
 
 @Component({
   selector: 'zh-test-playground',
-  imports: [],
+  imports: [LogComponent],
   templateUrl: './playground.component.html',
   styleUrl: './playground.component.scss',
 })
 export class PlaygroundComponent {
-  constructor() {}
+  private readonly logService = inject(LogService);
+  constructor() {
+    //this.clicks.pipe(mergeMap((id) => this.simulateApi(id))).subscribe(console.log);
+  }
 
   // #region Operadores de transformación: mergeMap, concatMap, switchMap
   clicks = from(['Petición A', 'Petición B', 'Petición C']);

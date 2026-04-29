@@ -1,0 +1,13 @@
+<div class="console-container">
+  <div class="console-header">
+    <span>Salida del Curso (Console)</span>
+    <button (click)="clear()">Limpiar</button>
+  </div>
+  <div class="console-body">
+    @for(log of logs; track $index) {
+    <div class="log-entry">
+      {{ log }}
+    </div>
+    }
+  </div>
+</div>
