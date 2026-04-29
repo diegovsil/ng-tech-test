@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { of, from, Observable, Subject } from 'rxjs';
-import { concatMap, mergeMap, switchMap, delay } from 'rxjs/operators';
+import { of, from, Observable, Subject, BehaviorSubject } from 'rxjs';
+import { concatMap, mergeMap, switchMap, delay, distinctUntilChanged } from 'rxjs/operators';
 import { LogComponent } from './log/log.component';
 import { LogService } from './log/log.service';
+import { incrementAction, setUserAction, StateService } from './state/state.service';
 
 @Component({
   selector: 'zh-test-playground',
@@ -12,13 +13,21 @@ import { LogService } from './log/log.service';
 })
 export class PlaygroundComponent {
   private readonly logService = inject(LogService);
+  private readonly store = inject(StateService);
   constructor() {
     //this.clicks.pipe(mergeMap((id) => this.simulateApi(id))).subscribe(console.log);
   }
 
   ngOnInit() {
-  }
 
+    this.store.state$.pipe(distinctUntilChanged()).subscribe((state) => {
+      console.log(`estado`, state);
+    });
+
+    this.store.dispatch(incrementAction());
+    //this.store.dispatch({ type: 'SET_USER', payload: { name: 'John Doe', age: 30 } });
+    this.store.dispatch(setUserAction({ name: 'John Doe', age: 30 }));
+  }
 
   // #region Operadores de transformación: mergeMap, concatMap, switchMap
   clicks = from(['Petición A', 'Petición B', 'Petición C']);
