@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { of, from } from 'rxjs';
+import { of, from, Observable, Subject } from 'rxjs';
 import { concatMap, mergeMap, switchMap, delay } from 'rxjs/operators';
 
 @Component({
@@ -9,12 +9,9 @@ import { concatMap, mergeMap, switchMap, delay } from 'rxjs/operators';
   styleUrl: './playground.component.scss',
 })
 export class PlaygroundComponent {
-  constructor() {
-    this.clicks.pipe(mergeMap((id) => this.simulateApi(id))).subscribe(console.log);
-    //this.clicks.pipe(concatMap((id) => this.simulateApi(id))).subscribe(console.log);
-    //this.clicks.pipe(switchMap((id) => this.simulateApi(id))).subscribe(console.log);
-  }
+  constructor() {}
 
+  // #region Operadores de transformación: mergeMap, concatMap, switchMap
   clicks = from(['Petición A', 'Petición B', 'Petición C']);
 
   // 2. Función que simula una llamada a API
@@ -26,7 +23,6 @@ export class PlaygroundComponent {
     return of(`✅ Respuesta de ${name}`).pipe(delay(delays[name]));
   }
 
-
   // PRUEBA 1: mergeMap (Paralelo)
   // Verás que B llega primero porque es la más rápida.
 
@@ -36,5 +32,51 @@ export class PlaygroundComponent {
 
   // PRUEBA 3: switchMap (El que cancela)
   // Como los clics son instantáneos, cancelará A y B antes de que terminen.
-  // clicks.pipe(switchMap(id => simulateApi(id))).subscribe(console.log);
+  //this.clicks.pipe(mergeMap((id) => this.simulateApi(id))).subscribe(console.log);
+  //this.clicks.pipe(concatMap((id) => this.simulateApi(id))).subscribe(console.log);
+  //this.clicks.pipe(switchMap((id) => this.simulateApi(id))).subscribe(console.log);
+
+  //#endregion
+
+  // #region Observable vs Observer
+
+  miObservable = new Observable((subscriber) => {
+    subscriber.next('Hola');
+    subscriber.next('Mundo');
+    subscriber.complete();
+  });
+
+  // 2. Definimos el OBSERVER (El cómo reaccionamos)
+  miObserver = {
+    next: (val: any) => console.log('Recibido:', val),
+    error: (err: any) => console.error('Error:', err),
+    complete: () => console.log('¡Flujo terminado!'),
+  };
+
+  // 3. LA CONEXIÓN (La suscripción)
+  testSubscribe() {
+    this.miObservable.subscribe(this.miObserver);
+  }
+
+  // #endregion
+
+  // #region Subject
+  // --- EL OBSERVABLE (Cerrado) ---
+
+  obs$ = new Observable((sub) => {
+    sub.next('Valor interno'); // Solo se puede emitir desde AQUÍ dentro
+  });
+
+  // --- EL SUBJECT (Abierto) ---
+  subj$ = new Subject();
+
+  testSubject() {
+    // Funciona como OBSERVER:
+    this.subj$.subscribe((v) => console.log('Observer 1 recibió:', v));
+    this.subj$.subscribe((v) => console.log('Observer 2 recibió:', v));
+
+    // Funciona como OBSERVABLE:
+    this.subj$.next('¡Hola a todos!'); // Tú controlas la emisión desde FUERA
+  }
+  // #endregion
 }
