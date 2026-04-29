@@ -16,6 +16,10 @@ export class PlaygroundComponent {
     //this.clicks.pipe(mergeMap((id) => this.simulateApi(id))).subscribe(console.log);
   }
 
+  ngOnInit() {
+  }
+
+
   // #region Operadores de transformación: mergeMap, concatMap, switchMap
   clicks = from(['Petición A', 'Petición B', 'Petición C']);
 
