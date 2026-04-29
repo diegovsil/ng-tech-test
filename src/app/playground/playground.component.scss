@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  gap: 20px;
+  section {
+flex-grow: 2;
+  }
+  aside {
+    width: 500px;
+  }
+}
